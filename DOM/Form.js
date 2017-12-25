@@ -1,5 +1,6 @@
 define(function(require){
 	var iDocument	=	require("DOM/iDocument");
+	var Entry	=	require( "DOM/Entry" );
 	
 	var Form = function(action, method){
 		iDocument.call(this);
@@ -19,27 +20,25 @@ define(function(require){
 	inherits(Form, iDocument);
 	
 	Form.prototype.addEntry	= function(label, placeholder	="入力してね♥"){
-		var name	=	"val"	+	this.member.childElementCount;
-
-		var lab			= document.createElement( "label" );
-		var tNode	=	document.createTextNode(label);
-		var input	= document.createElement( "input" );
-		input.type	= "text";
-		input.name	=	name;
-		input.placeholder	=	placeholder;
-		lab.appendChild( tNode );
-		lab.appendChild( input );
-		return this.addMember_( lab, input );
+		var entry	=	new Entry( this.self );
+		entry.addLabel( label );
+		entry.addInput( "text" );
+		entry.set();
+		this.addMember_( entry.self );
 	};
 	
+	Form.prototype.addPassword	=	function( label ){
+		var entry	=	new Entry( this.self);
+		entry.addLabel( label );
+		entry.addInput( "password" );
+		entry.set();
+		this.addMember_( entry.self );
+	};
+	
+	
 //----------------------------------------------------------------------------	
-	Form.prototype.addMember_	=	function( label, input ){
-		var li = document.createElement( "li" );
-		li.appendChild( label );
-		li.appendChild( input );
+	Form.prototype.addMember_	=	function( li ){
 		this.member.appendChild( li );
-		
-		return li;
 	};
 
 	var	addSubmit	=	function(form, value	=	"送信"){

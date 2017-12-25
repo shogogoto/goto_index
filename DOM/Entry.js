@@ -1,35 +1,44 @@
-//label付きinput要素
+//labelやbuttonによる複合input要素
 define(function(require){
 	var iDocument	=	require("DOM/iDocument");
 	
-	var Entry	=	function(){
+	var Entry		=	function( form ){
 		iDocument.call(this);
+		this.form	=	form;
+		this.self	=	document.createElement( "li" );
 	};
 	inherits(Entry, iDocument);
 	
 	Entry.prototype.addLabel	=	function( txt ){
 		var label	=	document.createElement( "label" );
-		var tNode	=	document.createTextNode( "txt" );
-		
+		var tNode	=	document.createTextNode( txt );
 		label.appendChild( tNode );
-
 		
+		this.label_	=	label;
+		return	label;
 	};
 	
-	Form.prototype.addEntry	= function(label, placeholder	="入力してね♥"){
-		var name	=	"val"	+	this.member.childElementCount;
+	Entry.prototype.addInput	=	function( type, placeholder="入力してね♥" ){
+		console.log(this.form);
+		console.log(this.form.member);
+		var name	=	"val";	//+	this.form.member.length;
 
-		var lab			= document.createElement( "label" );
-		var tNode	=	document.createTextNode(label);
-		var input	= document.createElement( "input" );
-		input.type	= "text";
-		input.name	=	name;
+		var input		= document.createElement( "input" );
+		input.type	=	type;
+		input.name	= name;
 		input.placeholder	=	placeholder;
-		lab.appendChild( tNode );
-		lab.appendChild( input );
-		return this.addMember_( lab, input );
+		this.input_	=	input;
+		return	input;
 	};
-
+	
+	Entry.prototype.set	=	function(){
+		this.label_.appendChild( this.input_);
+		this.self.appendChild( this.label_);
+		//this.self.appendChild( this.button_ );
+	};
+	
+	//Entry.prototype.addButton	=	function( txt ){
+	//};
 
 	return Entry;
 });

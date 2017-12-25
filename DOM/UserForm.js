@@ -6,13 +6,9 @@ define(function(require){
 	var UserForm	=	function(action, method){
 		Form.call( this, action, method );
 		this.addEntry("id");
-		this.addPwdEntry("パスワード");
+		this.addPassword("パスワード");
 	};
 	inherits(UserForm,	Form);
-	
-	UserForm.prototype.addPwdEntry	=	function(){
-		
-	}
 	
 	UserForm.prototype.setSubmit = function(){
 		this.self.addEventListener( "submit", function(ev){

@@ -14,17 +14,24 @@ define(function(require){
 	};
 	
 	FormFactory.prototype.createUser	=	function(	action, method ){
-		return new UserForm( action, method );
+		var f = new UserForm( action, method );
+		this.register( f );
+		return f;
 	};
  
  	FormFactory.prototype.createCategory	=	function(	action, method ){
-		return new CategoryForm( action, method );
+		var f	= new CategoryForm( action, method );
+		this.register( f );
+		return f;
 	};
  
 	FormFactory.prototype.register	=	function( form ){
 		this.forms.push( form );
 	};
- 
+	
+	FormFactory.prototype.getForms	=	function(){
+		return	this.forms;
+	};
  
  
 	return FormFactory;
