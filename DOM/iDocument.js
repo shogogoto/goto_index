@@ -26,5 +26,13 @@ define(function(require){
 		}
 	};
 	
+	iDocument.prototype.show	=	function(){
+		this.self.style.display	=	"block";
+	};
+	
+	iDocument.prototype.hide	=	function(){
+		this.self.style.display	=	"none";
+	};
+	
 	return iDocument;
 });

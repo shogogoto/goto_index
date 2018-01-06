@@ -1,30 +1,22 @@
 define(function(require){
-	var UserForm	=	require("DOM/UserForm");
-	var BookForm	=	require("DOM/BookForm");
-	var CategoryForm	=	require("DOM/CategoryForm");
+	var UserForm	=	require("DOM/Form/UserForm");
+	var BookForm	=	require("DOM/Form/BookForm");
+	var CategoryForm	=	require("DOM/Form/CategoryForm");
+	var ConceptForm	=	require("DOM/Form/ConceptForm");
+	var Button = require("DOM/Button");
 	
 	var FormFactory	=	function(){
 		this.forms	=	[];
 	};
 	
-	FormFactory.prototype.createBook	=	function( action, method ){
-		var f	= new BookForm( action, method );
+	//リフレクション
+	FormFactory.prototype.createForm	=	function( className ){
+		var text	=	"new " + className + "Form()";
+		var f	=	eval( text );
 		this.register( f );
 		return f;
 	};
 	
-	FormFactory.prototype.createUser	=	function(	action, method ){
-		var f = new UserForm( action, method );
-		this.register( f );
-		return f;
-	};
- 
- 	FormFactory.prototype.createCategory	=	function(	action, method ){
-		var f	= new CategoryForm( action, method );
-		this.register( f );
-		return f;
-	};
- 
 	FormFactory.prototype.register	=	function( form ){
 		this.forms.push( form );
 	};

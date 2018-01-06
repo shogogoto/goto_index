@@ -1,10 +1,11 @@
 //labelやbuttonによる複合input要素
+//Controlという名前のがよかったか
 define(function(require){
 	var iDocument	=	require("DOM/iDocument");
 	
-	var Entry		=	function( form ){
+	var Entry		=	function( ul ){
 		iDocument.call(this);
-		this.form	=	form;
+		this.parent	=	ul;	//Formインスタンス
 		this.self	=	document.createElement( "li" );
 	};
 	inherits(Entry, iDocument);
@@ -18,10 +19,8 @@ define(function(require){
 		return	label;
 	};
 	
-	Entry.prototype.addInput	=	function( type, placeholder="入力してね♥" ){
-		console.log(this.form);
-		console.log(this.form.member);
-		var name	=	"val";	//+	this.form.member.length;
+	Entry.prototype.addInput	=	function( type, placeholder="入力してね♂" ){
+		var name	=	"val"	+	this.parent.childElementCount;
 
 		var input		= document.createElement( "input" );
 		input.type	=	type;
@@ -29,6 +28,12 @@ define(function(require){
 		input.placeholder	=	placeholder;
 		this.input_	=	input;
 		return	input;
+	};
+	
+	Entry.prototype.addSelect	=	function(){
+		
+		var slct	=	document.createElement("select");
+		
 	};
 	
 	Entry.prototype.set	=	function(){

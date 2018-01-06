@@ -19,8 +19,8 @@ define(function(require){
 	};
 	inherits(Form, iDocument);
 	
-	Form.prototype.addEntry	= function(label, placeholder	="入力してね♥"){
-		var entry	=	new Entry( this.self );
+	Form.prototype.addEntry	= function( label ){
+		var entry	=	new Entry( this.member );
 		entry.addLabel( label );
 		entry.addInput( "text" );
 		entry.set();
@@ -28,13 +28,23 @@ define(function(require){
 	};
 	
 	Form.prototype.addPassword	=	function( label ){
-		var entry	=	new Entry( this.self);
+		var entry	=	new Entry( this.member );
 		entry.addLabel( label );
 		entry.addInput( "password" );
 		entry.set();
 		this.addMember_( entry.self );
 	};
-	
+
+	Form.prototype.ajax	 = function(){
+		var f	= $( this.self );
+		var ajx	= $.ajax({
+			url:	f.attr( 'action' ),
+			type: f.attr( 'method' ),
+			data: f.serializeArray()
+			//timeout: 10000  // 単位はミリ秒
+		});
+		return ajx;
+	};
 	
 //----------------------------------------------------------------------------	
 	Form.prototype.addMember_	=	function( li ){

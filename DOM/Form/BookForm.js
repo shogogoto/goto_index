@@ -1,16 +1,19 @@
 define(function(require){
 	var	isJSON	=	require("lib/isJSON");
-	var Form = require("DOM/Form");
+	var Form = require("DOM/Form/Form");
 	var Table = require("DOM/Table");
 	
-	var UserForm	=	function(action, method){
-		Form.call( this, action, method );
-		this.addEntry("id");
-		this.addPassword("パスワード");
+	var BookForm	=	function(){
+		this.action	=	"server/Book.php";
+		this.method	=	"post";
+		Form.call( this, this.action, this.method );
+		this.addEntry("題名", "プリンキピア");
+		this.addEntry("著者名", "アイザック　ニュートン");
+		this.addEntry("初版出版日",	"YYYY-MM-DD");
 	};
-	inherits(UserForm,	Form);
+	inherits(BookForm,	Form);
 	
-	UserForm.prototype.setSubmit = function(){
+	BookForm.prototype.setSubmit = function(){
 		this.self.addEventListener( "submit", function(ev){
 			var f	=	ev.currentTarget;
 			getAjax( f ).done(function(data){
@@ -35,7 +38,7 @@ define(function(require){
 		},false);
 	};
 
-	// addEventListenerのfunction内でprototypeとして使えない
+	// addEventListenerのfunction内で使えない
 	var getAjax	 = function(form){
 		var f	= $( form );
 		var ajx	= $.ajax({
@@ -47,5 +50,5 @@ define(function(require){
 		return ajx;
 	};
 
-	return	UserForm;
+	return	BookForm;
 });

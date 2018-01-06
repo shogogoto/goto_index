@@ -13,7 +13,7 @@ define(function(require){
 		return btn;
 	};
 
-	Button.prototype.setFunc	=	function(func){
+	Button.prototype.setClick	=	function(func){
 		this.self.addEventListener("click", func, false);
 	};
 	

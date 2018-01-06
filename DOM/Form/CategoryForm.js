@@ -1,5 +1,5 @@
 define(function(require){
-	var Form = require("DOM/Form");
+	var Form = require("DOM/Form/Form");
 	
 	var CategoryForm	=	function(action, method){
 		Form.call( this, action, method );
