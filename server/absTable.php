@@ -1,17 +1,15 @@
 <?php
-	require_once 'DB.php';
+	require_once(dirname(__FILE__).'\DB.php');
 
 	abstract class absTable {
-		private $tableName;
+		protected $dbName;
 
 
 		abstract protected function create();
 
 		public function clear(){
-			//truncate book;
-		}
-		
-		public function write($res){
-			echo json_encode( $res );
+			$db	=	new DB();
+			$db->query("truncate $this->dbName;");
+			$db	=	null;
 		}
 	}

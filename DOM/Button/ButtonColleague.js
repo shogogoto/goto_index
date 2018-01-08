@@ -1,16 +1,16 @@
 define(function(require){
-	var Button = require("DOM/Button");
-	var FormFactory	=	require("app/FormFactory");
+	var Button = require("DOM/Button/Button");
+	var FormFactory	=	require("app/Factory/Factory");
 	
 	var	ButtonColleague	=	function( text, className ){
 		Button.call(this, text);
 		
-		var factory	=	new FormFactory();
-		this.form	=	factory.createForm( className );
+		var factory	=	new FormFactory("Form");
+		this.form	=	factory.createProduct( className );
 	};
 	inherits( ButtonColleague, Button );
 	
-	ButtonColleague.prototype.update	=	function(){
+	ButtonColleague.prototype.controlColleague	=	function(){
 		this.mediator.colleagueChanged( this );
 	};
 	

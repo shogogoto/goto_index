@@ -4,21 +4,18 @@ define(function(require){
 	var Table = require("DOM/Table");
 	
 	var UserForm	=	function(){
-		this.action	=	"server/User.php";
+		this.action	=	"server/app/registerUser.php";
 		this.method	=	"post";
 		Form.call( this, this.action, this.method );
-		this.addEntry("id");
+		this.addEntry("ユーザー名");
 		this.addPassword("パスワード");
 	};
 	inherits(UserForm,	Form);
 	
 	UserForm.prototype.setSubmit = function(){
-		this.self.addEventListener( "submit", function(ev){
+		this.self.addEventListener( "submit", (function(ev){
 			var f	=	ev.currentTarget;
-			getAjax( f ).done(function(data){
-				alert(data + "\nを登録しました");
-				f.reset();
-				
+			this.getAjax( f ).done(function(data){
 				//引数が不適切なとき、netbeansが予期せず終了する汗
 				if(isJSON(data)){
 					var json	=	JSON.parse(data);
@@ -34,19 +31,7 @@ define(function(require){
 				alert("通信失敗");
 			});
 			
-		},false);
-	};
-
-	// addEventListenerのfunction内でprototypeとして使えない
-	var getAjax	 = function(form){
-		var f	= $( form );
-		var ajx	= $.ajax({
-			url:	f.attr( 'action' ),
-			type: f.attr( 'method' ),
-			data: f.serializeArray()
-			//timeout: 10000  // 単位はミリ秒
-		});
-		return ajx;
+		}).bind(this),false);
 	};
 
 	return	UserForm;

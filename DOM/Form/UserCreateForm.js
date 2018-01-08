@@ -3,17 +3,17 @@ define(function(require){
 	var Form = require("DOM/Form/Form");
 	var Table = require("DOM/Table");
 	
-	var BookForm	=	function(){
-		this.action	=	"server/Book.php";
+	var UserCreateForm	=	function(){
+		this.action	=	"server/app/registerUser.php";
 		this.method	=	"post";
 		Form.call( this, this.action, this.method );
-		this.addEntry("題名", "プリンキピア");
-		this.addEntry("著者名", "アイザック　ニュートン");
-		this.addEntry("初版出版日",	"YYYY-MM-DD");
+		this.addEntry("ユーザー名");
+		this.addPassword("パスワード");
+		this.addPassword("パスワードの確認");
 	};
-	inherits(BookForm,	Form);
+	inherits(UserCreateForm,	Form);
 	
-	BookForm.prototype.setSubmit = function(){
+	UserCreateForm.prototype.setSubmit = function(){
 		this.self.addEventListener( "submit", (function(ev){
 			var f	=	ev.currentTarget;
 			this.getAjax( f ).done(function(data){
@@ -32,8 +32,8 @@ define(function(require){
 				alert("通信失敗");
 			});
 			
-		}).bind(this), false);
+		}).bind(this),false);
 	};
 
-	return	BookForm;
+	return	UserCreateForm;
 });

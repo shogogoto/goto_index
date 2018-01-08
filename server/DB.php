@@ -29,13 +29,12 @@
 				exit;
 			}
 		}
+		
 		public function query($sql){
 			$pdo	= $this->createPDO();
 			$stmt	= $pdo->query($sql);
 			return $stmt->fetchAll(PDO::FETCH_ASSOC);
 		}
-		
-
 		
 		public function showTables(){
 			$res	=	$this->query("show tables");

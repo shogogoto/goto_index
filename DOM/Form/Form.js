@@ -8,14 +8,15 @@ define(function(require){
 		f.action	= action;
 		f.method	= method;	
 		toUnusable(f);
-		var mbr = document.createElement("ul");
+		
+		var ul = document.createElement("ul");
 		var p = document.createElement("p");
-		addSubmit(p);
-		addReset(p);
-		f.appendChild(mbr);
-		f.appendChild(p);
+		addSubmit( p );
+		addReset( p );
+		f.appendChild( ul );
+		f.appendChild( p );
 		this.self	= f;
-		this.member	=	mbr;
+		this.member	=	ul;
 	};
 	inherits(Form, iDocument);
 	
@@ -35,7 +36,7 @@ define(function(require){
 		this.addMember_( entry.self );
 	};
 
-	Form.prototype.ajax	 = function(){
+	Form.prototype.getAjax	 = function(){
 		var f	= $( this.self );
 		var ajx	= $.ajax({
 			url:	f.attr( 'action' ),
@@ -46,11 +47,11 @@ define(function(require){
 		return ajx;
 	};
 	
-//----------------------------------------------------------------------------	
 	Form.prototype.addMember_	=	function( li ){
 		this.member.appendChild( li );
 	};
 
+//----------------------------------------------------------------------------	
 	var	addSubmit	=	function(form, value	=	"送信"){
 		var	sub		=	document.createElement("input");
 		sub.type	=	"submit";
@@ -72,7 +73,6 @@ define(function(require){
 			ev.preventDefault();
 		});
 	};
-
 	
 	return Form;
 });

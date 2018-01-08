@@ -1,6 +1,6 @@
 define(function(require){
 	var	iDocument	=	function(){
-		this.isDisplay	=	true;
+		this.isDisplay	=	false;
 	};
 	
 	iDocument.prototype.display	=	function(parent	=	document.body ){
@@ -18,20 +18,20 @@ define(function(require){
 
 	iDocument.prototype.showSwitch	=	function(){
 		if(	this.isDisplay ){
-			this.self.style.display	=	"none";
-			this.isDisplay	=	false;
+			this.hide();
 		} else {
-			this.self.style.display	=	"block";
-			this.isDisplay	=	true;
+			this.show();
 		}
 	};
 	
 	iDocument.prototype.show	=	function(){
 		this.self.style.display	=	"block";
+		this.isDisplay	=	true;
 	};
 	
 	iDocument.prototype.hide	=	function(){
 		this.self.style.display	=	"none";
+		this.isDisplay	=	false;
 	};
 	
 	return iDocument;
