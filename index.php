@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>WikiNote</title>
+		<title>note2.0</title>
 		<link rel="icon" href="image/icoon-mono.png">
 		<link rel="apple-touch-icon" sizes="76x76" href="image/icoon-mono.png">
 		<link rel="apple-touch-icon" sizes="120x120" href="image/icoon-mono.png">
@@ -22,7 +22,12 @@
 		</script-->
 
 		<script type="text/javascript" src="lib/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="lib/jquery.validate.min.js" ></script>
+		<script type="text/javascript" src="lib/underscore.js" ></script>
+		<script type="text/javascript" src="lib/backbone-min.js" ></script>
+		<script type="text/javascript" src="lib/backbone.marionette.min.js" ></script>
 		<script type="text/javascript" src="lib/inherits.js" ></script>
+		<script type="text/javascript" src="lib/Mousetrap.js" ></script>
 		<script src="require_config.js"></script>
 		<script data-main="main.js" src="lib/require.js"></script>
 	</head>

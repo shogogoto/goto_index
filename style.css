@@ -1,80 +1,299 @@
+li {
+	list-style: none;
+}
+
+form.cmxform label.error, label.error {
+ color: red;
+}
+
+
+@media screen and (max-device-width:667px) {
+	body {
+		background-color: blue;
+		-webkit-text-size-adjust: 100%;
+	}
+	* {
+	font-size: 2rem;
+	}
+	
+	input {
+		width: 95vw;
+	}
+}
+
+
 body {
-  font-family: monospace;
-  
+  margin: 0;
+  /*
+  padding: 2em 3em;
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  */
+  box-sizing: border-box;
+  height: 100vh;
+  background: #fafafa;
+  font-family: "Roboto", sans-serif;
 }
 
-button {
-  background-color: wheat;
-  padding: .5em;
-  border: none;
+
+.menu-, .menu-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+/*
+.menu-list, .menu-one {
+  -webkit-transition: 0.25s ease-in;
+  -moz-transition: 0.25s ease-in;
+  -ms-transition: 0.25s ease-in;
+  -o-transition: 0.25s ease-in;
+  transition: 0.25s ease-in;
+}
+*/
+.menu-name:hover + .menu-list, .menu-list:hover {
+  opacity: 1;
+  z-index: 1;
 }
 
-form {
-  width: 50%;
+.menu- {
+  color: #f8f8f8;
+  background: #585858;
+}
+.menu-:after {
+  content: "";
+  clear: both;
   display: block;
-  margin: 0 auto;
+}
+.menu-case {
+  float: left;
+}
+.menu-case:hover .menu-name {
+  color: #507ea4;
+}
+.menu-name {
+  padding: 0.5em 0.8em;
+  cursor: default;
+}
+.menu-list {
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  border-top: 1px solid #666;
+  width: 10em;
+  background: #585858;
+  -webkit-box-shadow: 0 1px 4px -2px #666;
+  -moz-box-shadow: 0 1px 4px -2px #666;
+  box-shadow: 0 1px 4px -2px #666;
+}
+.menu-one {
+  padding: 0.3em 0.5em;
+  cursor: pointer;
+}
+.menu-one:hover {
+  background: #507ea4;
 }
 
-input,
-textarea {
-  width: 100%;
-  margin-bottom: 1em;
+
+/*
+.menubar {
+	position:fixed;
+	top:0%;
+	width:100vw;
+	height:10vh;
+	background: red;
+	display: block;
+}
+*/
+
+#Left {
+/*	
+	float: left;
+	background-color:white;
+	width: 60vw;
+	height:90vh;
+	background: cyan;
+	resize: horizontal;
+*/	
+	position:relative;
+	float: left;
+	overflow:hidden;
+	background: cyan;
+	/*width:40vw;*/
 }
 
-table {
-  width: auto;
-  border-spacing: 0;
-  font-size:14px;
+
+
+#Sheets {
+	position:relative;
+	background: green;
+	overflow:hidden;
 }
-table th {
-  color: #fff;
-  padding: 8px 15px;
-  background: #258;
-  background:-moz-linear-gradient(rgba(34,85,136,0.7), rgba(34,85,136,0.9) 50%);
-  background:-webkit-gradient(linear, 100% 0%, 100% 50%, from(rgba(34,85,136,0.7)), to(rgba(34,85,136,0.9)));
-  font-weight: bold;
-  border-left:1px solid #258;
-  border-top:1px solid #258;
-  border-bottom:1px solid #258;
-  line-height: 120%;
-  text-align: center;
-  text-shadow:0 -1px 0 rgba(34,85,136,0.9);
-  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+
+#Tabs {
+	background: graytext;
 }
-table th:first-child {
-  border-radius: 5px 0 0 0;	
+
+
+#History {
+	/*background:#507ea4;
+	height:10em;
+	*/
+	/*親ボックスが基準*/
+	margin:0.5em;
+	position: relative;
+	resize:both;
 }
-table th:last-child {
-  border-radius:0 5px 0 0;
-  border-right:1px solid #258;
-  box-shadow: 2px 2px 1px rgba(0,0,0,0.1),0px 1px 1px rgba(255,255,255,0.3) inset;
+
+.Right {
+	text-align: center;
+	background-color: springgreen;
+	overflow: auto;
 }
-table tr td {
-  padding: 8px 15px;
-  border-bottom: 1px solid #84b2e0;
-  border-left: 1px solid #84b2e0;
-  text-align: center;
+
+input {
+	margin:0;
 }
-table tr td:last-child {
-  border-right: 1px solid #84b2e0;
-  box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
+
+
+
+/*--フォームのスタイル----------------------------------------------------------------------------*/
+/*@charset "UTF-8";*/
+/*FORM2*/
+
+/*まず、フォーム全体の囲み罫や角丸を指定*/
+form#form2 {
+	color: #666;
+	padding: 7px;
+	margin-bottom: 15px;
+	border: 3px solid #EEE9ED;
+	/*↓ボックスの角丸の指定*/
+    -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
-table tr {
-  background: #fff;
+
+/*<p>に背景や角丸を指定*/
+form#form2 p {
+	margin:7px 0 0;
+	padding:10px;
+	font-size: 12px;
+	background: #EEE9ED;
+	/*↓ボックスの角丸の指定*/
+    -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
-table tr:nth-child(2n+1) {
-  background: #f1f6fc;
+/*最初の<p>にはマージンをつけない（:first-child疑似クラスによる指定）*/
+form#form2 p:first-child {
+	margin:0;}
+
+/* span要素をブロック化しフロートでフォーム部品と横に並べる*/
+form#form2 p span {
+	width: 19em;
+	margin:0px;
+	display:block;
+	float:left;
 }
-table tr:last-child td {
-  box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
+
+/*「:after」で <p>の末尾でフロートをクリア*/
+form#form2 p:after {
+	content:".";
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both;     /*←フロートをクリア*/
 }
-table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
+
+/* テキスト入力部品の見た目を統一する */
+form#form2 p label .txtfiled, form#form2 p select {
+	width:300px;
+	padding:3px 5px;
+	margin:0px;
+	color:#666;
+	border: solid 1px #ccc;
+	background: #fff;
+	/*シャドウをつける。*/
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -moz-box-shadow: 1px 1px 1px #fff;
+	box-shadow: 1px 1px 1px #fff;
+	/*角丸にする*/
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
 }
-table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
+form#form2 p select {
+	/*selectは250では大きすぎるので*/
+	width:100px;
 }
-table tr:hover {
-  background: #bbd4ee;
-  cursor:pointer;
+
+/*チェックボックス、ラジオボタンのブロックの指定*/
+form#form2 p span.check, form#form2 p span.radio {
+	display:block;
+	width:300px;
+}
+/*チェックボックス、ラジオボタンの label要素を横に並べる*/
+form#form2 p span.check label, form#form2 p span.radio label {
+	margin-right: 2em;
+	display: block;
+	float: left;
+	width: 9em;
+}
+/*ラジオボタンの label要素の幅は9emでは大きすぎるので調整*/
+form#form2 p span.radio label {
+	width: 4em;
+}
+/*「:after」で <span>の末尾でフロートをクリア*/
+form#form2 p span.check:after, form#form2 p span.radio:after {
+	content:".";
+	display:block;
+	height:0;
+	visibility:hidden;
+	clear:both;     /*←フロートをクリア*/
+}
+
+/*input要素とテキストがくっつかないように右にマージンを少し*/
+form#form2 p span.check label input, form#form2 p span.radio label input {
+	margin-right:0.5em;
+}
+/*チェックボックス、ラジオボタンの label要素にロールオーバー時の変化を指定する*/
+form#form2 p span.check label:hover , form#form2 p span.radio label:hover{
+	background : #C08B9B;
+	color: #fff;
+	font-weight:bold;
+}
+
+/*送信・リセットボタンの体裁を指定（[type="○○"]で属性の値でセレクト）*/
+form#form2 p input[type="submit"] ,
+form#form2 p input[type="reset"] {
+	cursor:pointer;     /*←これでカーソルを指先型に変化させる*/
+	font-size:130%;
+	font-weight: bold;
+	width:100px;
+	padding: 4px 10px;
+	margin-right:0.5em;
+	color: #fff;
+    border:1px solid #bbb;
+    background: #C08B9B;
+/*↓背景グラデーションの指定です*/
+    background: -moz-linear-gradient(top, #E7D6DB, #C08B9B);
+    background: -webkit-linear-gradient(top, #E7D6DB, #C08B9B);
+    background: linear-gradient(#E7D6DB, #C08B9B);
+/*↓以下、ボックスの角丸、シャドウの指定*/
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -moz-box-shadow: 1px 1px 1px #fff;
+	box-shadow: 1px 1px 1px #fff;
+/* IE用 */
+    filter:progid:DXImageTransform.Microsoft.gradient
+        (startColorstr=#E7D6DB,endColorstr=#C08B9B);
+    zoom: 1;
+}
+
+form#form2 p input[type="submit"]:hover ,
+form#form2 p input[type="reset"]:hover {
+/*↓ここではロールオーバー時の透明度を変更。もちろんグラデーションを指定してもOK*/
+	opacity: 0.8;
+	font-size:135%;
 }
